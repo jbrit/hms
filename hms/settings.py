@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core.apps.CoreConfig',
+    'referrals',
     'rest_framework',
     'drf_spectacular',
 ]
