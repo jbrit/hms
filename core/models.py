@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.db.models.signals import post_save
@@ -51,12 +51,8 @@ class User(AbstractUser):
     ]
     username = None
     email = models.EmailField(_('email address'), unique=True)
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
-    gender = models.CharField(
-        max_length=6, choices=GENDER_CHOICES
-    )
-    dob = models.DateField(_('date of birth'))
+    gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default=OTHERS)
+    dob = models.DateField(_('date of birth'), default=timezone.now)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
